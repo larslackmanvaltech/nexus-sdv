@@ -70,7 +70,7 @@ jobs:
           sleep 5
           
           # Wait for Deployment Availability (Standard K8s way)
-          if ! kubectl wait --for=condition=available deployment/external-dns -n external-dns --timeout=180s; then
+          if ! kubectl wait --for=condition=available deployment/external-dns -n external-dns --timeout=360s; then
             echo "::error::External DNS failed to become ready."
             kubectl describe pods -n external-dns
             kubectl logs -n external-dns -l app.kubernetes.io/name=external-dns --tail=50
